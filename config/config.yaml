@@ -1,0 +1,141 @@
+# Smart Irrigation Scheduling Through Reinforcement Learning
+# Project Configuration
+
+seed: 42
+
+environment:
+  horizon_days: 90
+  soil_capacity_mm: 100.0        # Total available water storage in root zone (mm)
+  wilting_point_ratio: 0.20      # Below 20% capacity causes severe drought stress
+  field_capacity_ratio: 0.80     # Optimal water holding capacity
+  saturation_ratio: 1.00         # 100% capacity (saturation limit)
+  initial_moisture_min: 0.40     # Random reset minimum fraction
+  initial_moisture_max: 0.65     # Random reset maximum fraction
+  drainage_rate: 0.50            # Fraction of water above field capacity drained per day
+  runoff_coefficient: 0.15       # Surface runoff fraction for intense rain
+
+  # Crop growth stages across 90 days
+  stages:
+    - name: "Initial"
+      start_day: 0
+      end_day: 20
+      kc: 0.45
+      target_min: 0.45
+      target_max: 0.65
+      stress_multiplier: 1.0
+    - name: "Development"
+      start_day: 21
+      end_day: 50
+      kc: 0.85
+      target_min: 0.55
+      target_max: 0.75
+      stress_multiplier: 1.2
+    - name: "Mid-Season (Flowering)"
+      start_day: 51
+      end_day: 75
+      kc: 1.15
+      target_min: 0.65
+      target_max: 0.85
+      stress_multiplier: 2.0     # Most vulnerable stage to drought
+    - name: "Late-Season (Ripening)"
+      start_day: 76
+      end_day: 90
+      kc: 0.60
+      target_min: 0.45
+      target_max: 0.65
+      stress_multiplier: 0.8
+
+  # Discrete actions: irrigation depth in mm
+  action_volumes:
+    0: 0.0    # No irrigation
+    1: 5.0    # Light irrigation (5 mm)
+    2: 10.0   # Medium irrigation (10 mm)
+    3: 20.0   # Heavy irrigation (20 mm)
+
+  # Reward weights
+  reward:
+    target_in_range_bonus: 1.0
+    deficit_penalty_weight: 2.5
+    excess_penalty_weight: 1.5
+    water_penalty_weight: 0.04
+    rain_waste_penalty_weight: 0.05
+
+weather:
+  states:
+    0: "Sunny"
+    1: "Cloudy"
+    2: "Rainy"
+  
+  # Scenarios for training and robustness testing
+  scenarios:
+    normal:
+      temp_mean: 28.0
+      temp_std: 3.5
+      rain_prob: 0.25
+      rain_amount_mean: 12.0
+      rain_amount_std: 6.0
+      transition_matrix:
+        - [0.65, 0.25, 0.10]   # Sunny to [Sunny, Cloudy, Rainy]
+        - [0.35, 0.45, 0.20]   # Cloudy to [Sunny, Cloudy, Rainy]
+        - [0.30, 0.40, 0.30]   # Rainy to [Sunny, Cloudy, Rainy]
+    dry:
+      temp_mean: 33.0
+      temp_std: 3.0
+      rain_prob: 0.08
+      rain_amount_mean: 5.0
+      rain_amount_std: 3.0
+      transition_matrix:
+        - [0.80, 0.16, 0.04]
+        - [0.60, 0.35, 0.05]
+        - [0.50, 0.40, 0.10]
+    wet:
+      temp_mean: 24.0
+      temp_std: 2.5
+      rain_prob: 0.55
+      rain_amount_mean: 18.0
+      rain_amount_std: 8.0
+      transition_matrix:
+        - [0.35, 0.40, 0.25]
+        - [0.20, 0.45, 0.35]
+        - [0.15, 0.40, 0.45]
+    heatwave:
+      temp_mean: 36.5
+      temp_std: 2.5
+      rain_prob: 0.10
+      rain_amount_mean: 8.0
+      rain_amount_std: 4.0
+      transition_matrix:
+        - [0.85, 0.12, 0.03]
+        - [0.65, 0.30, 0.05]
+        - [0.55, 0.35, 0.10]
+
+training:
+  algorithm: "PPO"
+  total_timesteps: 100000
+  learning_rate: 0.0003
+  n_steps: 1024
+  batch_size: 64
+  n_epochs: 10
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  ent_coef: 0.01
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+
+baselines:
+  fixed_schedule:
+    interval_days: 3
+    volume_mm: 10.0
+  threshold_based:
+    lower_threshold_ratio: 0.50
+    irrigation_volume_mm: 10.0
+  smart_threshold:
+    lower_threshold_ratio: 0.55
+    irrigation_volume_mm: 10.0
+    rain_threshold_skip_mm: 5.0
+
+evaluation:
+  test_episodes: 20
+  seeds: [101, 202, 303, 404, 505]
+  scenarios: ["normal", "dry", "wet", "heatwave"]

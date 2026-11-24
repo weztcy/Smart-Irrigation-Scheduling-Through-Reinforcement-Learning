@@ -1,0 +1,101 @@
+scenario,policy,seed,cumulative_reward,total_water_mm,mean_moisture_ratio,target_compliance_pct,deficit_stress_days,excess_water_days,num_irrigations,water_use_efficiency
+normal,RL Agent (PPO),101,51.32,100.0,0.695,68.89,0,28,13,6.2
+normal,RL Agent (PPO),202,50.316,110.0,0.682,67.78,3,26,15,5.545
+normal,RL Agent (PPO),303,61.642,135.0,0.659,78.89,3,16,19,5.259
+normal,RL Agent (PPO),404,60.46,150.0,0.673,77.78,3,17,22,4.667
+normal,RL Agent (PPO),505,49.408,110.0,0.715,68.89,0,28,18,5.636
+normal,Fixed Schedule (3-Day),101,-0.73,300.0,0.795,30.0,0,63,30,0.9
+normal,Fixed Schedule (3-Day),202,-1.321,300.0,0.789,28.89,2,62,30,0.867
+normal,Fixed Schedule (3-Day),303,0.496,300.0,0.771,32.22,2,59,30,0.967
+normal,Fixed Schedule (3-Day),404,0.384,300.0,0.795,31.11,0,62,30,0.933
+normal,Fixed Schedule (3-Day),505,10.647,300.0,0.795,41.11,0,53,30,1.233
+normal,Threshold-Based,101,35.242,70.0,0.631,60.0,18,18,7,7.714
+normal,Threshold-Based,202,28.151,100.0,0.628,50.0,25,20,10,4.5
+normal,Threshold-Based,303,28.701,130.0,0.589,60.0,28,8,13,4.154
+normal,Threshold-Based,404,17.287,130.0,0.605,46.67,34,14,13,3.231
+normal,Threshold-Based,505,11.872,90.0,0.65,35.56,28,30,9,3.556
+normal,Smart Threshold,101,36.206,80.0,0.657,58.89,14,23,8,6.625
+normal,Smart Threshold,202,30.615,100.0,0.666,53.33,16,26,10,4.8
+normal,Smart Threshold,303,35.083,130.0,0.634,61.11,21,14,13,4.231
+normal,Smart Threshold,404,33.058,130.0,0.629,57.78,24,14,13,4.0
+normal,Smart Threshold,505,23.372,90.0,0.667,44.44,20,30,9,4.444
+normal,No Irrigation,101,-6.349,0.0,0.477,36.67,49,8,0,33.0
+normal,No Irrigation,202,-88.26,0.0,0.286,20.0,72,0,0,18.0
+normal,No Irrigation,303,-84.49,0.0,0.347,21.11,67,4,0,19.0
+normal,No Irrigation,404,-110.941,0.0,0.276,34.44,59,0,0,31.0
+normal,No Irrigation,505,-117.655,0.0,0.317,17.78,63,11,0,16.0
+dry,RL Agent (PPO),101,60.659,365.0,0.651,86.67,3,9,51,2.137
+dry,RL Agent (PPO),202,70.389,360.0,0.635,96.67,1,2,54,2.417
+dry,RL Agent (PPO),303,66.033,360.0,0.652,92.22,2,5,52,2.306
+dry,RL Agent (PPO),404,59.502,335.0,0.664,84.44,2,12,47,2.269
+dry,RL Agent (PPO),505,72.752,320.0,0.643,97.78,1,1,46,2.75
+dry,Fixed Schedule (3-Day),101,-95.011,300.0,0.362,28.89,59,5,30,0.867
+dry,Fixed Schedule (3-Day),202,-90.015,300.0,0.35,36.67,56,1,30,1.1
+dry,Fixed Schedule (3-Day),303,-52.334,300.0,0.483,36.67,39,18,30,1.1
+dry,Fixed Schedule (3-Day),404,-47.486,300.0,0.499,34.44,40,19,30,1.033
+dry,Fixed Schedule (3-Day),505,-51.851,300.0,0.479,28.89,47,17,30,0.867
+dry,Threshold-Based,101,-3.816,350.0,0.512,41.11,52,1,35,1.057
+dry,Threshold-Based,202,-2.83,350.0,0.512,40.0,54,0,35,1.029
+dry,Threshold-Based,303,-2.117,350.0,0.508,43.33,51,0,35,1.114
+dry,Threshold-Based,404,-1.008,320.0,0.526,42.22,51,1,32,1.188
+dry,Threshold-Based,505,-3.563,320.0,0.517,38.89,54,1,32,1.094
+dry,Smart Threshold,101,18.582,360.0,0.562,56.67,38,1,36,1.417
+dry,Smart Threshold,202,19.912,360.0,0.56,58.89,37,0,36,1.472
+dry,Smart Threshold,303,21.524,360.0,0.562,60.0,36,0,36,1.5
+dry,Smart Threshold,404,19.673,320.0,0.563,57.78,37,1,32,1.625
+dry,Smart Threshold,505,21.514,320.0,0.568,56.67,38,1,32,1.594
+dry,No Irrigation,101,-225.111,0.0,0.064,3.33,87,0,0,3.0
+dry,No Irrigation,202,-232.204,0.0,0.051,0.0,90,0,0,0.0
+dry,No Irrigation,303,-216.116,0.0,0.083,6.67,84,0,0,6.0
+dry,No Irrigation,404,-209.63,0.0,0.097,5.56,85,0,0,5.0
+dry,No Irrigation,505,-211.644,0.0,0.093,7.78,83,0,0,7.0
+wet,RL Agent (PPO),101,12.86,15.0,0.808,32.22,0,61,2,19.333
+wet,RL Agent (PPO),202,17.343,10.0,0.79,34.44,0,59,2,31.0
+wet,RL Agent (PPO),303,24.153,0.0,0.776,40.0,0,54,0,36.0
+wet,RL Agent (PPO),404,12.317,0.0,0.806,30.0,0,63,0,27.0
+wet,RL Agent (PPO),505,16.704,5.0,0.806,34.44,0,59,1,62.0
+wet,Fixed Schedule (3-Day),101,-18.369,300.0,0.854,17.78,0,74,30,0.533
+wet,Fixed Schedule (3-Day),202,-22.257,300.0,0.846,12.22,2,77,30,0.367
+wet,Fixed Schedule (3-Day),303,-15.828,300.0,0.847,20.0,0,72,30,0.6
+wet,Fixed Schedule (3-Day),404,-24.391,300.0,0.857,13.33,0,78,30,0.4
+wet,Fixed Schedule (3-Day),505,-23.458,300.0,0.864,15.56,0,76,30,0.467
+wet,Threshold-Based,101,10.167,10.0,0.807,28.89,2,62,1,26.0
+wet,Threshold-Based,202,15.794,10.0,0.795,33.33,2,58,1,30.0
+wet,Threshold-Based,303,19.687,10.0,0.785,35.56,0,58,1,32.0
+wet,Threshold-Based,404,12.317,0.0,0.806,30.0,0,63,0,27.0
+wet,Threshold-Based,505,17.648,0.0,0.804,35.56,0,58,0,32.0
+wet,Smart Threshold,101,10.127,10.0,0.809,28.89,2,62,1,26.0
+wet,Smart Threshold,202,14.761,20.0,0.8,33.33,2,58,2,15.0
+wet,Smart Threshold,303,19.466,10.0,0.788,35.56,0,58,1,32.0
+wet,Smart Threshold,404,12.317,0.0,0.806,30.0,0,63,0,27.0
+wet,Smart Threshold,505,17.648,0.0,0.804,35.56,0,58,0,32.0
+wet,No Irrigation,101,12.608,0.0,0.802,31.11,2,60,0,28.0
+wet,No Irrigation,202,18.196,0.0,0.78,34.44,4,55,0,31.0
+wet,No Irrigation,303,24.153,0.0,0.776,40.0,0,54,0,36.0
+wet,No Irrigation,404,12.317,0.0,0.806,30.0,0,63,0,27.0
+wet,No Irrigation,505,17.648,0.0,0.804,35.56,0,58,0,32.0
+heatwave,RL Agent (PPO),101,60.416,425.0,0.649,90.0,4,5,58,1.906
+heatwave,RL Agent (PPO),202,65.12,410.0,0.654,94.44,1,4,58,2.073
+heatwave,RL Agent (PPO),303,61.701,425.0,0.659,93.33,2,4,57,1.976
+heatwave,RL Agent (PPO),404,57.834,390.0,0.68,86.67,1,11,52,2.0
+heatwave,RL Agent (PPO),505,61.94,385.0,0.669,91.11,2,6,54,2.13
+heatwave,Fixed Schedule (3-Day),101,-132.506,300.0,0.279,26.67,65,1,30,0.8
+heatwave,Fixed Schedule (3-Day),202,-135.002,300.0,0.259,18.89,73,0,30,0.567
+heatwave,Fixed Schedule (3-Day),303,-103.142,300.0,0.384,30.0,50,13,30,0.9
+heatwave,Fixed Schedule (3-Day),404,-76.695,300.0,0.452,32.22,43,18,30,0.967
+heatwave,Fixed Schedule (3-Day),505,-111.143,300.0,0.368,21.11,55,16,30,0.633
+heatwave,Threshold-Based,101,-6.437,400.0,0.506,41.11,53,0,40,0.925
+heatwave,Threshold-Based,202,-2.784,400.0,0.51,44.44,50,0,40,1.0
+heatwave,Threshold-Based,303,-6.623,390.0,0.51,41.11,52,1,39,0.949
+heatwave,Threshold-Based,404,-0.791,350.0,0.522,44.44,50,0,35,1.143
+heatwave,Threshold-Based,505,-3.519,370.0,0.512,42.22,52,0,37,1.027
+heatwave,Smart Threshold,101,13.543,410.0,0.556,55.56,39,1,41,1.22
+heatwave,Smart Threshold,202,16.866,400.0,0.553,57.78,38,0,40,1.3
+heatwave,Smart Threshold,303,16.18,400.0,0.56,55.56,39,1,40,1.25
+heatwave,Smart Threshold,404,17.046,350.0,0.561,55.56,39,1,35,1.429
+heatwave,Smart Threshold,505,18.806,370.0,0.561,57.78,38,0,37,1.405
+heatwave,No Irrigation,101,-228.98,0.0,0.057,2.22,88,0,0,2.0
+heatwave,No Irrigation,202,-237.599,0.0,0.039,0.0,90,0,0,0.0
+heatwave,No Irrigation,303,-216.815,0.0,0.083,5.56,85,0,0,5.0
+heatwave,No Irrigation,404,-208.543,0.0,0.097,5.56,85,0,0,5.0
+heatwave,No Irrigation,505,-213.847,0.0,0.086,6.67,84,0,0,6.0
